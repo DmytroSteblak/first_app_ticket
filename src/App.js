@@ -3,18 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components"
 
 
-import  {FormCheck,Card,Button,Col, Row, Container, Image, Form } from "react-bootstrap";
+import {Card, Button, Col, Row, Container, Image} from "react-bootstrap";
 import React from "react";
-
+import Nav from "./components/Nav/Nav";
 
 
 const Styles = styled.div`
     background: #f3f7fa;
     
-    input,label:hover{
-        background:#f1fcff;
-        cursor: pointer;
-        }
     button{ 
         background: white;
         border: none;
@@ -30,6 +26,15 @@ const Styles = styled.div`
         font-size: 14px;
     }
 `
+const Btn = styled.div`
+    button{
+        width: 17rem;
+        height: 60px;
+        @media(max-width: 992px){
+            min-width: 50%;
+        }
+    }
+`
 
 function App() {
     return (
@@ -39,60 +44,22 @@ function App() {
                     <Image style={{width: "120px", margin: "70px auto"}} src="/assets/airport.png" alt="icon_img"/>
                 </Row>
                 <Row>
-                    <Col md="4">
-                        <Form.Group className="bg-white p-4 shadow 1 ">
-                            <h6 className="mb-4">количество пересадок</h6>
-                            <FormCheck>
-                                <FormCheck.Label>Все
-                                    <FormCheck.Input className="mb-3" type={"checkbox"} />
-                                </FormCheck.Label>
-                            </FormCheck>
-                            <FormCheck>
-                                <FormCheck.Label>Без пересадок
-                                    <FormCheck.Input className="mb-3" type={"checkbox"} />
-                                </FormCheck.Label>
-                            </FormCheck>
-                            <FormCheck>
-                                <FormCheck.Label>1 пересадка
-                                    <FormCheck.Input className="mb-3" type={"checkbox"} />
-                                </FormCheck.Label>
-                            </FormCheck>
-                            <FormCheck>
-                                <FormCheck.Label>2 пересадки
-                                    <FormCheck.Input className="mb-3" type={"checkbox"} />
-                                </FormCheck.Label>
-                            </FormCheck>
-                            <FormCheck>
-                                <FormCheck.Label>3 пересадки
-                                    <FormCheck.Input className="mb-3" type={"checkbox"} />
-                                </FormCheck.Label>
-                            </FormCheck>
-                        </Form.Group>
-                        {/*<Card className="bg-white pt-4 ps-4 border-0 shadow 1" >*/}
-                        {/*    <h6 className="mb-4">количество песадок</h6>*/}
-                        {/*    <ul className="list-unstyled">*/}
-                        {/*        <li className="mb-3"><input type="checkbox"/> Все</li>*/}
-                        {/*        <li className="mb-3"><input type="checkbox"/> Без пересадок</li>*/}
-                        {/*        <li className="mb-3"><input type="checkbox"/> 1 пересадка</li>*/}
-                        {/*        <li className="mb-3"><input type="checkbox"/> 2 пересадки</li>*/}
-                        {/*        <li className="mb-3"><input type="checkbox"/> 3 пересадки</li>*/}
-                        {/*    </ul>*/}
-                        {/*</Card>*/}
-                    </Col>
-                    <Col md="8">
-
-                        <Button style={{width: "17rem", height: "60px"}}>
-                            самый дешевый
-                        </Button>
-                        <Button style={{width: "17rem", height: "60px"}}>
-                            самый дорогой
-                        </Button>
-
-                        <Card style={{ width: '34rem' }} className="mt-4 border-0 shadow 1">
+                    <Nav/>
+                    <Col lg="8" md="12">
+                        <Btn>
+                            <Button>
+                                самый дешевый
+                            </Button>
+                            <Button>
+                                самый дорогой
+                            </Button>
+                        </Btn>
+                        
+                        <Card style={{width: '34rem', margin: "0 auto"}} className="mt-4 border-0 shadow 1">
                             <Card.Body>
                                 <Row className="d-flex justify-content-between m-1">
                                     <h5 className="w-25">12 000p</h5>
-                                    <Image style={{width: "150px"}}  src="/assets/icon.png" />
+                                    <Image style={{width: "150px"}} src="/assets/icon.png"/>
                                 </Row>
 
                                 <Row className="d-flex justify-content-between">
