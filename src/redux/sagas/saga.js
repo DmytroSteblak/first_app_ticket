@@ -17,7 +17,7 @@ export function* workerSaga() {
     const data = yield call(getId)
     yield put(getSearchId(data.searchId))
     const tickets = yield call(getTicket,data.searchId)
-    yield put(getTickets(tickets))
+    yield put(getTickets(tickets.tickets))
 
 }
 

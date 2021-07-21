@@ -1,11 +1,9 @@
-import React from "react"
-import {Col, Form, FormCheck} from "react-bootstrap";
-import {NavB} from "../../styled/Transplants-styled";
-
-
+import React from 'react'
+import { Col, Form, FormCheck } from 'react-bootstrap';
+import { NavB } from '../styled/Transplants-styled';
 
 const Transplants = () => (
-    <Col lg="4" md="12" xs="12" >
+    <Col lg="4" md="12" xs="12">
         <Form.Group className="bg-white p-4 shadow 1 ">
             <NavB>
                 <h6 className="mb-4">количество пересадок</h6>
@@ -42,6 +40,5 @@ const Transplants = () => (
         </Form.Group>
     </Col>
 )
-
 
 export default Transplants;

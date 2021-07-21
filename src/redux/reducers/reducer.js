@@ -1,13 +1,13 @@
-const GET_SEARCH_ID = "GET_SEARCH_ID"
-const GET_TICKETS = "GET_TICKETS"
+const GET_SEARCH_ID = 'GET_SEARCH_ID'
+const GET_TICKETS = 'GET_TICKETS'
 
 const initialState = {
-    searchId: "",
+    searchId: '',
     tickets: [],
 }
 
-const reducer = (state = initialState,action) =>{
-    switch (action.type){
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case GET_SEARCH_ID:
             return {
                 ...state,
@@ -25,5 +25,5 @@ const reducer = (state = initialState,action) =>{
 
 export default reducer;
 
-export const getSearchId = (payload) => ({type:GET_SEARCH_ID,payload})
-export const getTickets = (payload) => ({type:GET_TICKETS,payload})
+export const getSearchId = (payload) => ({type:GET_SEARCH_ID, payload});
+export const getTickets = (payload) => ({type:GET_TICKETS, payload});

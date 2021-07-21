@@ -1,12 +1,9 @@
-import React from "react";
-import {ButtonComp} from "../Button/Button";
-import {FilterRow} from "../../styled/Filter-component";
+import React from 'react';
+import {ButtonComp} from './index';
+import { FilterRow } from '../styled/Filter-component';
 
-
-
-
-const Filter = (props) => (
-    <FilterRow {...props}>
+const Filter = () => (
+    <FilterRow>
         <ButtonComp router={"cheap"}>
             самый дешевый
         </ButtonComp>
@@ -14,8 +11,6 @@ const Filter = (props) => (
             самый быстрый
         </ButtonComp>
     </FilterRow>
-
-
 )
 
 export default Filter;

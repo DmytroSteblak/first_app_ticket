@@ -1,7 +1,7 @@
 import styled, {createGlobalStyle} from "styled-components";
 
 export const Global = createGlobalStyle`
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,12 +14,12 @@ export const Global = createGlobalStyle`
 export const theme = {
     colors: {
         primary: "#f3f7fa",
-        secondary: "#1b97f3",
+        secondary: "#1b97f3"
     },
     media: {
         phone: "(max-width: 425px)",
         tablet: "(max-width: 768px) and (min-width: 425px)",
-        large: "(max-width: 992px) and (min-width: 768px)",
+        large: "(max-width: 992px) and (min-width: 768px)"
     },
     size:{
         medium: "22px"
@@ -28,7 +28,7 @@ export const theme = {
 
 export const Styles = styled.div`
     background: ${theme.colors.primary};
-    .container{
+    .container {
         max-width: 960px;
         height: 100vh;
     }
