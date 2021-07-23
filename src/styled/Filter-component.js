@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import {theme} from "./Global-styled";
+import styled from 'styled-components';
+
+import { theme } from './Global-styled';
 
 export const FilterRow = styled.div`
     display: flex;
@@ -13,4 +14,4 @@ export const FilterRow = styled.div`
         align-items: center;
         margin-top: 20px;
     }
-`
+`;

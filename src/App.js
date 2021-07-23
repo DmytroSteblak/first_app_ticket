@@ -1,34 +1,23 @@
-import React from "react";
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header, Transplants, Filter, Ticket } from './components';
-import  { Button, Col, Row, Container } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { Header, Filter, Sort, TicketsList } from './components';
+import { Col, Row, Container } from 'react-bootstrap';
 import { Styles } from './styled/Global-styled';
 
-function App() {
-
-    const dispatch = useDispatch();
-    const { searchId } = useSelector(state => state);
-    const { tickets } = useSelector(state => state);
-
-    return (
+const App = () => (
         <Styles>
             <Container>
                 <Header/>
-                { searchId ? <span> ключ: <b>{ searchId }</b></span> : <Button onClick={() => dispatch({type: "LOAD_ID"})}>
-                    получит  ключ
-                </Button>}
                 <Row>
-                    <Transplants/>
+                    <Filter/>
                     <Col lg="8" md="12">
-                        <Filter/>
-                        { tickets.map((ticket,id) => <Ticket key={id} price={ticket.price}/>)}
-
+                        <Sort/>
+                        <TicketsList />
                     </Col>
                 </Row>
             </Container>
         </Styles>
     );
-}
 
 export default App;

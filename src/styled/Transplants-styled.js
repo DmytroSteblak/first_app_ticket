@@ -1,7 +1,9 @@
-import styled from "styled-components";
-import {theme} from "./Global-styled";
+import styled from 'styled-components';
+
+import { theme } from './Global-styled';
 
 export const NavB = styled.div`
+    text-transform: uppercase;
     .check_itm:hover {
         background:${theme.colors.primary};
         background-size:cover;
@@ -20,13 +22,13 @@ export const NavB = styled.div`
     }
 }
     @media ${theme.media.phone} {
-    h6{
+    h6 {
         text-align: center;
     }
-    div{
+    div {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 }
-`
+`;

@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import {theme} from "./Global-styled";
+import styled from 'styled-components';
+
+import { theme } from './Global-styled';
 
 export const CardBody = styled.div`
-    
     margin: 0 auto;
    .header_ticket {
        display: flex;
@@ -16,6 +16,7 @@ export const CardBody = styled.div`
        font-weight: 500;
    }
    .topClass {
+       text-transform: uppercase;
        opacity: 0.5;
    }
    h5 {
@@ -51,4 +52,4 @@ export const CardBody = styled.div`
         margin-right: 13px;
     }
  }
-`
+`;
