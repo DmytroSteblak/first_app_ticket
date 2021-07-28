@@ -4,10 +4,10 @@ import { theme } from './Global-styled';
 
 export const FilterRow = styled.div`
     display: flex;
-    @media ${theme.media.large},${theme.media.tablet} {
-    margin-top: 25px;
-    justify-content: space-between;
-}
+    @media ${theme.media.large}, ${theme.media.tablet} {
+        margin-top: 25px;
+        justify-content: space-between;
+    }
     @media ${theme.media.phone} {
         display: flex;
         flex-direction: column;

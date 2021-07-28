@@ -7,9 +7,15 @@ export const Btn = styled.div`
         width: 18rem;
         height: 60px;
         outline: none;
-        background: white;
+        background: ${theme.colors.white};
         border: none;
         color: black;
         font-size: ${theme.size.medium};                
+    }
+    @media ${theme.media.tablet} {
+        button {
+            width: 12rem;
+            height: 50px;               
+        }
     }   
 `;
