@@ -1,10 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { ButtonComp } from './index';
-import { FilterRow } from '../styled/Filter-component';
-
-import { useDispatch } from 'react-redux';
 import { fastTickets, sortTickets } from '../redux/ducks/TicketsReducer';
+import { FilterRow } from '../styled/Filter-component';
 
 const Sort = () => {
     const dispatch = useDispatch();

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-
 import{ Col, Form, FormCheck } from 'react-bootstrap';
 
 import {
@@ -23,107 +22,116 @@ const Filter = () => {
         two: false,
         three: false,
     });
-
+    const { pathname } = history.location;
     useEffect(() =>{
-        const { pathname } = history.location;
         setState({
             [pathname.slice(1)]: true,
         });
     },[]);
+    useEffect(() =>{
+        setState(prevState => ({
+            ...prevState, all: true
+        }));
+    },[]);
 
     const handleClickFilter = (e) =>{
-        history.push(`/${e.target.name}`);
+        console.log(e)
+        history.push(`/${e.target.defaultValue}`);
         setState({
-        [e.target.name]: e.target.checked,
+        [e.target.defaultValue]: e.target.checked,
         });
-    if (e.target.name === 'one') {
+    if (e.target.defaultValue === 'one') {
         dispatch(oneStopping());
         }
-    if (e.target.name === 'two') {
+    if (e.target.defaultValue === 'two') {
         dispatch(twoStopping());
         }
-    if (e.target.name === 'three') {
+    if (e.target.defaultValue === 'three') {
         dispatch(threeStopping());
         }
-    if (e.target.name === 'all') {
+    if (e.target.defaultValue === 'all') {
         dispatch(allTickets());
         }
-    if (e.target.name === 'no') {
+    if (e.target.defaultValue === 'no') {
         dispatch(withoutStopped());
         }
-    }
+    };
 
     return (
         <Formik
             initialValues={{
-                toggle: false,
-                check: []
+                checked: []
+            }}
+            onSubmit={values => {
+                console.log(values);
             }}
         >
-            <Col lg="4" md="12" xs="12">
-                <Form.Group className="bg-white p-4 shadow 1">
-                    <NavB>
-                        <h6 className="mb-4">количество пересадок</h6>
-                        <div>
-                            <FormCheck className="check_itm">
-                                <FormCheck.Label>Все
-                                    <FormCheck.Input
-                                        onChange={handleClickFilter}
-                                        checked={state.all}
-                                        name="all"
-                                        value="all"
-                                        className="mb-3"
-                                    />
-                                </FormCheck.Label>
-                            </FormCheck>
-                            <FormCheck className="check_itm">
-                                <FormCheck.Label>Без пересадок
-                                    <FormCheck.Input
-                                        onChange={handleClickFilter}
-                                        checked={state.no}
-                                        name="no"
-                                        value="no"
-                                        className="mb-3"
-                                    />
-                                </FormCheck.Label>
-                            </FormCheck>
-                            <FormCheck className="check_itm">
-                                <FormCheck.Label>1 пересадка
-                                    <FormCheck.Input
-                                        onChange={handleClickFilter}
-                                        checked={state.one}
-                                        name="one"
-                                        value="one"
-                                        className="mb-3"
-                                    />
-                                </FormCheck.Label>
-                            </FormCheck>
-                            <FormCheck className="check_itm">
-                                <FormCheck.Label>2 пересадки
-                                    <FormCheck.Input
-                                        onChange={handleClickFilter}
-                                        checked={state.two}
-                                        name="two"
-                                        value="two"
-                                        className="mb-3"
-                                    />
-                                </FormCheck.Label>
-                            </FormCheck>
-                            <FormCheck className="check_itm">
-                                <FormCheck.Label>3 пересадки
-                                    <FormCheck.Input
-                                        onChange={handleClickFilter}
-                                        checked={state.three}
-                                        name="three"
-                                        value="three"
-                                        className="mb-4"
-                                    />
-                                </FormCheck.Label>
-                            </FormCheck>
-                        </div>
-                    </NavB>
-                </Form.Group>
-            </Col>
+            {() => (
+                <Col lg="4" md="12" xs="12">
+                    <Form.Group className="bg-white p-4 shadow 1">
+                        <NavB>
+                            <h6 className="mb-4">количество пересадок</h6>
+                            <div>
+                                <FormCheck className="check_itm">
+                                    <FormCheck.Label>Все
+                                        <FormCheck.Input
+                                            onChange={handleClickFilter}
+                                            checked={state.all}
+                                            name="checked"
+                                            value="all"
+                                            className="mb-3"
+                                        />
+                                    </FormCheck.Label>
+                                </FormCheck>
+                                <FormCheck className="check_itm">
+                                    <FormCheck.Label>Без пересадок
+                                        <FormCheck.Input
+                                            onChange={handleClickFilter}
+                                            checked={state.no}
+                                            name="checked"
+                                            value="no"
+                                            className="mb-3"
+                                        />
+                                    </FormCheck.Label>
+                                </FormCheck>
+                                <FormCheck className="check_itm">
+                                    <FormCheck.Label>1 пересадка
+                                        <FormCheck.Input
+                                            onChange={handleClickFilter}
+                                            checked={state.one}
+                                            name="checked"
+                                            value="one"
+                                            className="mb-3"
+                                        />
+                                    </FormCheck.Label>
+                                </FormCheck>
+                                <FormCheck className="check_itm">
+                                    <FormCheck.Label>2 пересадки
+                                        <FormCheck.Input
+                                            onChange={handleClickFilter}
+                                            checked={state.two}
+                                            name="checked"
+                                            value="two"
+                                            className="mb-3"
+                                        />
+                                    </FormCheck.Label>
+                                </FormCheck>
+                                <FormCheck className="check_itm">
+                                    <FormCheck.Label>3 пересадки
+                                        <FormCheck.Input
+                                            onChange={handleClickFilter}
+                                            checked={state.three}
+                                            name="checked"
+                                            value="three"
+                                            className="mb-4"
+                                        />
+                                    </FormCheck.Label>
+                                </FormCheck>
+                            </div>
+                        </NavB>
+                    </Form.Group>
+                </Col>
+            )}
         </Formik>
     );
 };

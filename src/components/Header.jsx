@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { Image, Row } from 'react-bootstrap';
+
 import { StyledHeader } from '../styled/Header-styled';
 
 const Header = () => (
