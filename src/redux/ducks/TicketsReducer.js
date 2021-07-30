@@ -4,12 +4,9 @@ import axios from 'axios';
 import {
     ALL_TICKETS,
     CHEAP,
-    FAST,
+    FAST, FILTER_STOPPING,
     GET_TICKETS,
-    ONE_STOPPING,
-    SET_TICKETS, THREE_STOPPING,
-    TWO_STOPPING,
-    WITHOUT_STOPPING
+    SET_TICKETS,
 } from './types';
 
 import { urlApi } from './IdReducer';
@@ -45,33 +42,12 @@ export const ticketsReducer = (state = initialState, action) => {
                 ...state,
                 filterTickets: allData
             };
-        case WITHOUT_STOPPING:
+        case FILTER_STOPPING:
             const data = state.tickets.slice().filter((a) =>
-                a.segments[0].stops.length === 0 && a.segments[1].stops.length === 0);
+                a.segments[0].stops.length === action.payload && a.segments[1].stops.length === action.payload);
             return {
                 ...state,
                 filterTickets: data
-            };
-        case ONE_STOPPING:
-            const dataOne = state.tickets.slice().filter((a) =>
-                a.segments[0].stops.length === 1 && a.segments[1].stops.length === 1);
-            return {
-                ...state,
-                filterTickets: dataOne
-            };
-        case TWO_STOPPING:
-            const dataTwo = state.tickets.slice().filter((a) =>
-                a.segments[0].stops.length === 2 && a.segments[1].stops.length === 2);
-            return {
-                ...state,
-                filterTickets: dataTwo
-            };
-        case THREE_STOPPING:
-            const dataThree = state.tickets.slice().filter((a) =>
-                a.segments[0].stops.length === 3 && a.segments[1].stops.length === 3);
-            return {
-                ...state,
-                filterTickets: dataThree
             };
         default:
             return state;
@@ -85,10 +61,7 @@ export const sortTickets = () => ({ type:CHEAP });
 export const fastTickets = () => ({ type: FAST });
 
 export const allTickets = () => ({ type: ALL_TICKETS });
-export const withoutStopped = () => ({ type: WITHOUT_STOPPING });
-export const oneStopping = () => ({ type: ONE_STOPPING });
-export const twoStopping = () => ({ type: TWO_STOPPING });
-export const threeStopping = () => ({ type: THREE_STOPPING });
+export const filterStopped = (payload) => ({ type: FILTER_STOPPING, payload });
 
 const getTicket =  async (id) => {
     try {

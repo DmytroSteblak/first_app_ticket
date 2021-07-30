@@ -4,12 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import{ Col, Form, FormCheck } from 'react-bootstrap';
 
-import {
-    allTickets,
-    oneStopping, threeStopping,
-    twoStopping,
-    withoutStopped
-} from '../redux/ducks/TicketsReducer';
+import {allTickets, filterStopped} from '../redux/ducks/TicketsReducer';
 import { NavB } from '../styled/Transplants-styled';
 
 const Filter = () => {
@@ -22,6 +17,13 @@ const Filter = () => {
         two: false,
         three: false,
     });
+    const tickets = [
+        { name: "checked", id: 4, value: "all", label: "Все", state: state.all },
+        { name: "checked", id: 0, value: "no", label: "Без пересадок", state: state.no },
+        { name: "checked", id: 1, value: "one", label: "1 пересадка", state: state.one },
+        { name: "checked", id: 2, value: "two", label: "2 пересадки", state: state.two },
+        { name: "checked", id: 3, value: "three", label: "3 пересадки", state: state.three },
+    ];
     const { pathname } = history.location;
     useEffect(() =>{
         setState({
@@ -33,27 +35,16 @@ const Filter = () => {
             ...prevState, all: true
         }));
     },[]);
-
-    const handleClickFilter = (e) =>{
-        console.log(e)
+    const handleClickFilter = (e, id, value) =>{
         history.push(`/${e.target.defaultValue}`);
         setState({
-        [e.target.defaultValue]: e.target.checked,
+            [e.target.defaultValue]: e.target.checked,
         });
-    if (e.target.defaultValue === 'one') {
-        dispatch(oneStopping());
+        if (e.target.defaultValue === value) {
+            dispatch(filterStopped(id));
         }
-    if (e.target.defaultValue === 'two') {
-        dispatch(twoStopping());
-        }
-    if (e.target.defaultValue === 'three') {
-        dispatch(threeStopping());
-        }
-    if (e.target.defaultValue === 'all') {
-        dispatch(allTickets());
-        }
-    if (e.target.defaultValue === 'no') {
-        dispatch(withoutStopped());
+        if (e.target.defaultValue === "all") {
+            dispatch(allTickets());
         }
     };
 
@@ -72,61 +63,19 @@ const Filter = () => {
                         <NavB>
                             <h6 className="mb-4">количество пересадок</h6>
                             <div>
-                                <FormCheck className="check_itm">
-                                    <FormCheck.Label>Все
-                                        <FormCheck.Input
-                                            onChange={handleClickFilter}
-                                            checked={state.all}
-                                            name="checked"
-                                            value="all"
-                                            className="mb-3"
-                                        />
-                                    </FormCheck.Label>
-                                </FormCheck>
-                                <FormCheck className="check_itm">
-                                    <FormCheck.Label>Без пересадок
-                                        <FormCheck.Input
-                                            onChange={handleClickFilter}
-                                            checked={state.no}
-                                            name="checked"
-                                            value="no"
-                                            className="mb-3"
-                                        />
-                                    </FormCheck.Label>
-                                </FormCheck>
-                                <FormCheck className="check_itm">
-                                    <FormCheck.Label>1 пересадка
-                                        <FormCheck.Input
-                                            onChange={handleClickFilter}
-                                            checked={state.one}
-                                            name="checked"
-                                            value="one"
-                                            className="mb-3"
-                                        />
-                                    </FormCheck.Label>
-                                </FormCheck>
-                                <FormCheck className="check_itm">
-                                    <FormCheck.Label>2 пересадки
-                                        <FormCheck.Input
-                                            onChange={handleClickFilter}
-                                            checked={state.two}
-                                            name="checked"
-                                            value="two"
-                                            className="mb-3"
-                                        />
-                                    </FormCheck.Label>
-                                </FormCheck>
-                                <FormCheck className="check_itm">
-                                    <FormCheck.Label>3 пересадки
-                                        <FormCheck.Input
-                                            onChange={handleClickFilter}
-                                            checked={state.three}
-                                            name="checked"
-                                            value="three"
-                                            className="mb-4"
-                                        />
-                                    </FormCheck.Label>
-                                </FormCheck>
+                                {tickets.map((itm) => (
+                                    <FormCheck className="check_itm" key={itm.id}>
+                                        <FormCheck.Label>{itm.label}
+                                            <FormCheck.Input
+                                                onChange={(event) => handleClickFilter(event, itm.id, itm.value)}
+                                                checked={itm.state}
+                                                name={itm.name}
+                                                value={itm.value}
+                                                className="mb-3"
+                                            />
+                                        </FormCheck.Label>
+                                    </FormCheck>
+                                ))}
                             </div>
                         </NavB>
                     </Form.Group>
