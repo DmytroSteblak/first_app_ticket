@@ -7,7 +7,7 @@ import {
     GET_TICKETS,
     SET_TICKETS,
 } from './types';
-import {getTicket} from '../../api';
+import { getTicket } from '../../api';
 
 const initialState = {
     tickets: [],
@@ -54,9 +54,9 @@ export const ticketsReducer = (state = initialState, action) => {
 }
 
 export const setTickets = () => ({ type: SET_TICKETS });
-export const getTickets = (payload) => ({ type:GET_TICKETS, payload });
+export const getTickets = (payload) => ({ type: GET_TICKETS, payload });
 
-export const sortTickets = () => ({ type:CHEAP });
+export const sortTickets = () => ({ type: CHEAP });
 export const fastTickets = () => ({ type: FAST });
 
 export const allTickets = () => ({ type: ALL_TICKETS });

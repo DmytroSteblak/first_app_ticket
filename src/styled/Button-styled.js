@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { theme } from './Global-styled';
-import {TABLET_SIZE} from './Variable-styled';
+import { TABLET_SIZE } from './Variable-styled';
 
 export const Btn = styled.div`
     button {

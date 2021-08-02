@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 
 import { GET_SEARCH_ID, LOAD_ID } from './types';
-import {getId} from '../../api';
+import { getId } from '../../api';
 
 const initialState = {
     searchId: ''
@@ -19,7 +19,7 @@ export const idReducer = (state = initialState, action) => {
     }
 }
 
-export const getSearchId = (payload) => ({ type:GET_SEARCH_ID, payload });
+export const getSearchId = (payload) => ({ type: GET_SEARCH_ID, payload });
 export const LoadId = () => ({ type: LOAD_ID });
 
 export function* idWorkerSaga() {
