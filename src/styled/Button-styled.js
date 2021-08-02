@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { theme } from './Global-styled';
+import {TABLET_SIZE} from './Variable-styled';
 
 export const Btn = styled.div`
     button {
@@ -12,7 +13,7 @@ export const Btn = styled.div`
         color: black;
         font-size: ${theme.size.medium};                
     }
-    @media ${theme.media.tablet} {
+    @media (max-width: ${TABLET_SIZE}) {
         button {
             width: 12rem;
             height: 50px;               

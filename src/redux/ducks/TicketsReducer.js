@@ -1,5 +1,4 @@
 import { call, put, select } from 'redux-saga/effects';
-import axios from 'axios';
 
 import {
     ALL_TICKETS,
@@ -8,8 +7,7 @@ import {
     GET_TICKETS,
     SET_TICKETS,
 } from './types';
-
-import { urlApi } from './IdReducer';
+import {getTicket} from '../../api';
 
 const initialState = {
     tickets: [],
@@ -44,7 +42,8 @@ export const ticketsReducer = (state = initialState, action) => {
             };
         case FILTER_STOPPING:
             const data = state.tickets.slice().filter((a) =>
-                a.segments[0].stops.length === action.payload && a.segments[1].stops.length === action.payload);
+                a.segments[0].stops.length === action.payload
+                && a.segments[1].stops.length === action.payload);
             return {
                 ...state,
                 filterTickets: data
@@ -62,17 +61,6 @@ export const fastTickets = () => ({ type: FAST });
 
 export const allTickets = () => ({ type: ALL_TICKETS });
 export const filterStopped = (payload) => ({ type: FILTER_STOPPING, payload });
-
-const getTicket =  async (id) => {
-    try {
-        const { data } = await axios.get(`${urlApi}tickets?searchId=${id}`);
-        return data?.stop ? data : getTicket(id);
-    }catch (error) {
-        if (error.response.status === 500) {
-            return getTicket(id);
-        }
-    }
-};
 
 export function* ticketsWorkerSaga() {
     const id = yield select(state => state.idReducer.searchId);

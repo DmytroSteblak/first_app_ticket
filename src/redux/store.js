@@ -1,10 +1,10 @@
 import createSagaMiddleware from 'redux-saga';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import { takeEvery } from "redux-saga/effects";
+import { takeEvery } from 'redux-saga/effects';
 
 import  { ticketsReducer, ticketsWorkerSaga } from './ducks/TicketsReducer';
 import  { idReducer, idWorkerSaga } from './ducks/IdReducer';
-import { LOAD_ID, SET_TICKETS } from "./ducks/types";
+import { LOAD_ID, SET_TICKETS } from './ducks/types';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -17,7 +17,7 @@ sagaMiddleware.run(rootSaga);
 
 function* rootSaga() {
     yield watchTicketSaga();
-};
+}
 
 function* watchTicketSaga() {
     yield takeEvery(LOAD_ID, idWorkerSaga);

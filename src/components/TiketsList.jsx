@@ -12,15 +12,15 @@ const TicketsList = () => {
 
     useEffect(() =>{
         dispatch(LoadId());
-    },[]);
+    },[dispatch]);
 
     useEffect(() =>{
         dispatch(setTickets());
-    },[searchId]);
+    },[searchId,dispatch]);
 
     useEffect(() =>{
         dispatch(allTickets());
-    },[tickets]);
+    },[tickets,dispatch]);
 
     return (
         <>

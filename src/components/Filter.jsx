@@ -26,15 +26,17 @@ const Filter = () => {
     ];
     const { pathname } = history.location;
     useEffect(() =>{
-        setState({
-            [pathname.slice(1)]: true,
-        });
-    },[]);
-    useEffect(() =>{
-        setState(prevState => ({
-            ...prevState, all: true
-        }));
-    },[]);
+        if (pathname === "/"){
+            setState(prevState => ({
+                ...prevState, all: true
+            }));
+        } else {
+            setState({
+                [pathname.slice(1)]: true,
+            });
+        }
+
+    },[pathname]);
     const handleClickFilter = (e, id, value) =>{
         history.push(`/${e.target.defaultValue}`);
         setState({

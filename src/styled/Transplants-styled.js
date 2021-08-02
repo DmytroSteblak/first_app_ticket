@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { theme } from './Global-styled';
+import { LARGE_SIZE, MOBILE_SIZE } from './Variable-styled';
 
 export const NavB = styled.div`
     text-transform: uppercase;
@@ -11,24 +12,24 @@ export const NavB = styled.div`
     label:hover {
         cursor: pointer;
     }
-    @media ${theme.media.large}, ${theme.media.tablet} {
-    h6 {
-        text-align: center;
+    @media (max-width: ${LARGE_SIZE}) {
+        h6 {
+            text-align: center;
         }
-    div {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        div {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
     }
-    @media ${theme.media.phone} {
-    h6 {
-        text-align: center;
+    @media (max-width: ${MOBILE_SIZE}) {
+        h6 {
+            text-align: center;
         }
-    div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
 `;

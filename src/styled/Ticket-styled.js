@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { theme } from './Global-styled';
+import { MOBILE_SIZE, TABLET_SIZE } from './Variable-styled';
 
 export const CardBody = styled.div`
     margin: 0 auto;
@@ -27,7 +28,7 @@ export const CardBody = styled.div`
     img {
         width: 150px;
     }
-    @media ${theme.media.tablet} { 
+    @media (max-width: ${TABLET_SIZE}) { 
         h5 {
             font-size: 30px;
         } 
@@ -36,7 +37,7 @@ export const CardBody = styled.div`
             height: 50px;
         }
     }
-    @media ${theme.media.phone} {
+    @media (max-width: ${MOBILE_SIZE}) {
         .header_ticket {
             display: flex;
             justify-content: space-between;
