@@ -6,7 +6,7 @@ import { Styles } from './styled/Global-styled';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = () => (
+const App: React.FC = (): JSX.Element => (
     <Styles>
         <Container>
             <Header />

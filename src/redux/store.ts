@@ -6,11 +6,20 @@ import  { ticketsReducer, ticketsWorkerSaga } from './ducks/TicketsReducer';
 import  { idReducer, idWorkerSaga } from './ducks/IdReducer';
 import { LOAD_ID, SET_TICKETS } from './ducks/types';
 
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
+
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     idReducer,ticketsReducer
 });
+
+type RootReducerType = typeof rootReducer;
+export type AppStateType = ReturnType<RootReducerType>
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
 sagaMiddleware.run(rootSaga);

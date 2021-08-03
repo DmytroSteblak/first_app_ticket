@@ -9,7 +9,7 @@ export const getId = async () => {
     return response.data;
 };
 
-export const getTicket =  async (id) => {
+export const getTicket =  async (id: string): Promise<any>  => {
     try {
         const { data } = await instance.get(`tickets?searchId=${id}`);
         return data?.stop ? data : getTicket(id);

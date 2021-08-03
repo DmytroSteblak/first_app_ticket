@@ -8,14 +8,23 @@ import {
     SET_TICKETS,
 } from './types';
 import { getTicket } from '../../api';
+import {
+    ActionAllTickets,
+    ActionCheap,
+    ActionFast, ActionFilterStopped,
+    ActionGetTicket,
+    ActionSetTicket,
+    initialStateTicket,
+    TicketsType
+} from '../../typeTS/type';
 
-const initialState = {
+const initialState: initialStateTicket = {
     tickets: [],
     loading: true,
     filterTickets: []
 };
 
-export const ticketsReducer = (state = initialState, action) => {
+export const ticketsReducer = (state = initialState, action: any): initialStateTicket => {
     switch (action.type) {
         case GET_TICKETS:
             return {
@@ -53,16 +62,16 @@ export const ticketsReducer = (state = initialState, action) => {
     }
 }
 
-export const setTickets = () => ({ type: SET_TICKETS });
-export const getTickets = (payload) => ({ type: GET_TICKETS, payload });
+export const setTickets = (): ActionSetTicket => ({ type: SET_TICKETS });
+export const getTickets = (payload: TicketsType[]): ActionGetTicket => ({ type: GET_TICKETS, payload });
 
-export const sortTickets = () => ({ type: CHEAP });
-export const fastTickets = () => ({ type: FAST });
+export const sortTickets = (): ActionCheap => ({ type: CHEAP });
+export const fastTickets = (): ActionFast => ({ type: FAST });
 
-export const allTickets = () => ({ type: ALL_TICKETS });
-export const filterStopped = (payload) => ({ type: FILTER_STOPPING, payload });
+export const allTickets = (): ActionAllTickets => ({ type: ALL_TICKETS });
+export const filterStopped = (payload: TicketsType[]): ActionFilterStopped => ({ type: FILTER_STOPPING, payload });
 
-export function* ticketsWorkerSaga() {
+export function* ticketsWorkerSaga(): any {
     const id = yield select(state => state.idReducer.searchId);
     if (id){
         const data = yield call(getTicket,id);
