@@ -4,7 +4,7 @@ import { takeEvery } from 'redux-saga/effects';
 
 import  { ticketsReducer, ticketsWorkerSaga } from './ducks/TicketsReducer';
 import  { idReducer, idWorkerSaga } from './ducks/IdReducer';
-import { LOAD_ID, SET_TICKETS } from './ducks/types';
+import { IdTypes, TicketTypes } from '../types';
 
 declare global {
     interface Window {
@@ -29,8 +29,8 @@ function* rootSaga() {
 }
 
 function* watchTicketSaga() {
-    yield takeEvery(LOAD_ID, idWorkerSaga);
-    yield takeEvery(SET_TICKETS, ticketsWorkerSaga);
+    yield takeEvery(IdTypes.LOAD_ID, idWorkerSaga);
+    yield takeEvery(TicketTypes.SET_TICKETS, ticketsWorkerSaga);
 }
 
 export default store;

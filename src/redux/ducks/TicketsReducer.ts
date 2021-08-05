@@ -1,22 +1,15 @@
 import { call, put, select } from 'redux-saga/effects';
 
-import {
-    ALL_TICKETS,
-    CHEAP,
-    FAST, FILTER_STOPPING,
-    GET_TICKETS,
-    SET_TICKETS,
-} from './types';
 import { getTicket } from '../../api';
 import {
     ActionAllTickets,
     ActionCheap,
     ActionFast, ActionFilterStopped,
     ActionGetTicket,
-    ActionSetTicket,
+    ActionSetTicket, ActionTypes, dataTypes,
     initialStateTicket,
-    TicketsType
-} from '../../typeTS/type';
+    TicketsType, TicketTypes
+} from '../../types';
 
 const initialState: initialStateTicket = {
     tickets: [],
@@ -24,35 +17,34 @@ const initialState: initialStateTicket = {
     filterTickets: []
 };
 
-export const ticketsReducer = (state = initialState, action: any): initialStateTicket => {
+export const ticketsReducer = (state = initialState, action: ActionTypes): initialStateTicket => {
     switch (action.type) {
-        case GET_TICKETS:
+        case TicketTypes.GET_TICKETS:
             return {
                 ...state,
                 tickets: action.payload,
                 loading: false
             };
-        case CHEAP:
+        case TicketTypes.CHEAP:
             return {
                 ...state,
                 filterTickets: state.filterTickets.slice().sort((a, b) => a.price - b.price)
             };
-        case FAST:
+        case TicketTypes.FAST:
             return {
                 ...state,
                 filterTickets: state.filterTickets.slice().sort(
                     (a, b) => a.segments[0].duration - b.segments[0].duration)
             };
-        case ALL_TICKETS:
+        case TicketTypes.ALL_TICKETS:
             const allData = state.tickets.slice();
             return {
                 ...state,
                 filterTickets: allData
             };
-        case FILTER_STOPPING:
-            const data = state.tickets.slice().filter((a) =>
-                a.segments[0].stops.length === action.payload
-                && a.segments[1].stops.length === action.payload);
+        case TicketTypes.FILTER_STOPPING:
+            const data = state.tickets.filter((a) =>
+                a.segments[0].stops.length === action.payload && a.segments[1].stops.length === action.payload);
             return {
                 ...state,
                 filterTickets: data
@@ -62,19 +54,19 @@ export const ticketsReducer = (state = initialState, action: any): initialStateT
     }
 }
 
-export const setTickets = (): ActionSetTicket => ({ type: SET_TICKETS });
-export const getTickets = (payload: TicketsType[]): ActionGetTicket => ({ type: GET_TICKETS, payload });
+export const setTickets = (): ActionSetTicket => ({ type: TicketTypes.SET_TICKETS });
+export const getTickets = (payload: TicketsType[]): ActionGetTicket => ({ type: TicketTypes.GET_TICKETS, payload });
 
-export const sortTickets = (): ActionCheap => ({ type: CHEAP });
-export const fastTickets = (): ActionFast => ({ type: FAST });
+export const sortTickets = (): ActionCheap => ({ type: TicketTypes.CHEAP });
+export const fastTickets = (): ActionFast => ({ type: TicketTypes.FAST });
 
-export const allTickets = (): ActionAllTickets => ({ type: ALL_TICKETS });
-export const filterStopped = (payload: TicketsType[]): ActionFilterStopped => ({ type: FILTER_STOPPING, payload });
+export const allTickets = (): ActionAllTickets => ({ type: TicketTypes.ALL_TICKETS });
+export const filterStopped = (payload: number): ActionFilterStopped => ({ type: TicketTypes.FILTER_STOPPING, payload });
 
-export function* ticketsWorkerSaga(): any {
-    const id = yield select(state => state.idReducer.searchId);
+export function* ticketsWorkerSaga() {
+    const id: string = yield select(state => state.idReducer.searchId);
     if (id){
-        const data = yield call(getTicket,id);
+        const data: dataTypes = yield call(getTicket,id);
         yield put(getTickets(data?.tickets));
     }
 }

@@ -1,17 +1,16 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC } from 'react';
 
 import { ButtonComp } from './index';
-import { fastTickets, sortTickets } from '../redux/ducks/TicketsReducer';
+import { useAction } from '../hooks/useAction';
 import { FilterRow } from '../styled/Filter-component';
 
-const Sort = () => {
-    const dispatch = useDispatch();
+const Sort: FC = () => {
+    const { sortTickets, fastTickets } = useAction();
     const handleCheap = () => {
-        dispatch(sortTickets());
+        sortTickets();
     };
     const handleFast = () => {
-        dispatch(fastTickets());
+        fastTickets();
     };
 
     return (

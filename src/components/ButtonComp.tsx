@@ -2,9 +2,9 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 import { Btn } from '../styled/Button-styled';
-import { TypeButton } from '../typeTS/type';
+import { TypeButton } from '../types';
 
-const ButtonComp = ({ children, onClick }:TypeButton): JSX.Element => (
+const ButtonComp: React.FC<TypeButton> = ({ children, onClick }) => (
     <Btn>
         <Button onClick={() => onClick()}>
             { children }

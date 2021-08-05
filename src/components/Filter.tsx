@@ -1,52 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Formik } from 'formik';
 import{ Col, Form, FormCheck } from 'react-bootstrap';
 
-import {allTickets, filterStopped} from '../redux/ducks/TicketsReducer';
+import { useAction } from '../hooks/useAction';
+import { Categories } from '../types';
+import { tickets } from './index';
 import { NavB } from '../styled/Transplants-styled';
 
 const Filter = () => {
-    let history = useHistory();
-    const dispatch = useDispatch();
-    const [state, setState] = useState({
-        all: false,
-        no: false,
-        one: false,
-        two: false,
-        three: false,
-    });
-    const tickets = [
-        { name: "checked", id: 4, value: "all", label: "Все", state: state.all },
-        { name: "checked", id: 0, value: "no", label: "Без пересадок", state: state.no },
-        { name: "checked", id: 1, value: "one", label: "1 пересадка", state: state.one },
-        { name: "checked", id: 2, value: "two", label: "2 пересадки", state: state.two },
-        { name: "checked", id: 3, value: "three", label: "3 пересадки", state: state.three },
-    ];
-    const { pathname } = history.location;
-    useEffect(() =>{
-        if (pathname === "/"){
-            setState(prevState => ({
-                ...prevState, all: true
-            }));
-        } else {
-            setState({
-                [pathname.slice(1)]: true,
-            });
-        }
+    const history = useHistory();
+    const { filterStopped, allTickets } = useAction();
+    const [currentCategory, setCurrentCategory] = useState<Categories>(Categories.All);
 
+    const { pathname } = useLocation();
+    useEffect(() => {
+        if (pathname === "/") {
+            setCurrentCategory(Categories.All);
+        } else {
+            setCurrentCategory(pathname.slice(1) as Categories);
+        }
     },[pathname]);
-    const handleClickFilter = (e, id, value) =>{
+    const handleClickFilter = (e: ChangeEvent<HTMLInputElement>, id: number, value: string) => {
         history.push(`/${e.target.defaultValue}`);
-        setState({
-            [e.target.defaultValue]: e.target.checked,
-        });
         if (e.target.defaultValue === value) {
-            dispatch(filterStopped(id));
+            filterStopped(id);
         }
         if (e.target.defaultValue === "all") {
-            dispatch(allTickets());
+            allTickets();
         }
     };
 
@@ -69,8 +50,8 @@ const Filter = () => {
                                     <FormCheck className="check_itm" key={itm.id}>
                                         <FormCheck.Label>{itm.label}
                                             <FormCheck.Input
-                                                onChange={(event) => handleClickFilter(event, itm.id, itm.value)}
-                                                checked={itm.state}
+                                                onChange={(event: ChangeEvent<HTMLInputElement>) => handleClickFilter(event, itm.id, itm.value)}
+                                                checked={itm.value === currentCategory}
                                                 name={itm.name}
                                                 value={itm.value}
                                                 className="mb-3"

@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { Ticket } from './index';
-import { allTickets, setTickets } from '../redux/ducks/TicketsReducer';
-import { LoadId } from '../redux/ducks/IdReducer';
+import { useTypeSelector } from '../hooks/useTypeSelector';
+import {useDispatch} from 'react-redux';
+import {LoadId} from '../redux/ducks/IdReducer';
+import {allTickets, setTickets} from '../redux/ducks/TicketsReducer';
 
-const TicketsList = () => {
+const TicketsList: React.FC = () => {
     const dispatch = useDispatch();
-    const { searchId } = useSelector(state => state.idReducer);
-    const { filterTickets, tickets, loading } = useSelector(state => state.ticketsReducer);
+    const { searchId } = useTypeSelector(state => state.idReducer);
+    const { filterTickets, tickets, loading } = useTypeSelector(state => state.ticketsReducer);
 
     useEffect(() =>{
         dispatch(LoadId());
