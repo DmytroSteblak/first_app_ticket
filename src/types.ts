@@ -1,4 +1,4 @@
-import {ButtonHTMLAttributes, ReactNode} from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 export interface TypeButton extends ButtonHTMLAttributes<HTMLButtonElement>{
     onClick: () => void,
@@ -89,7 +89,7 @@ export interface checkTypes {
     label: string,
 }
 export enum Categories {
-    All = "all"
+    All = 'all'
 }
 
 export interface dataId {

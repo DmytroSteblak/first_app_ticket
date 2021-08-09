@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sort component should render Sort component 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Sort
+    onClick={[MockFunction]}
+  >
+    <styled.div>
+      <div
+        className="sc-jSFjdj htJIKz"
+      >
+        <ButtonComp
+          onClick={[Function]}
+        >
+          <styled.div>
+            <div
+              className="sc-eCApnc fqVHnC"
+            >
+              <Button
+                active={false}
+                disabled={false}
+                onClick={[Function]}
+                variant="primary"
+              >
+                <button
+                  className="btn btn-primary"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  самый дешевый
+                </button>
+              </Button>
+            </div>
+          </styled.div>
+        </ButtonComp>
+        <ButtonComp
+          onClick={[Function]}
+        >
+          <styled.div>
+            <div
+              className="sc-eCApnc fqVHnC"
+            >
+              <Button
+                active={false}
+                disabled={false}
+                onClick={[Function]}
+                variant="primary"
+              >
+                <button
+                  className="btn btn-primary"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  самый быстрый
+                </button>
+              </Button>
+            </div>
+          </styled.div>
+        </ButtonComp>
+      </div>
+    </styled.div>
+  </Sort>
+</Provider>
+`;

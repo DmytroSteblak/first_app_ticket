@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Ticket } from './index';
 import { useTypeSelector } from '../hooks/useTypeSelector';
-import {useDispatch} from 'react-redux';
-import {LoadId} from '../redux/ducks/IdReducer';
-import {allTickets, setTickets} from '../redux/ducks/TicketsReducer';
+import { LoadId } from '../redux/ducks/IdReducer';
+import { allTickets, setTickets } from '../redux/ducks/TicketsReducer';
 
 const TicketsList: React.FC = () => {
     const dispatch = useDispatch();

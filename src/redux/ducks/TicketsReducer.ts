@@ -11,7 +11,7 @@ import {
     TicketsType, TicketTypes
 } from '../../types';
 
-const initialState: initialStateTicket = {
+export const initialState: initialStateTicket = {
     tickets: [],
     loading: true,
     filterTickets: []
@@ -47,7 +47,7 @@ export const ticketsReducer = (state = initialState, action: ActionTypes): initi
                 a.segments[0].stops.length === action.payload && a.segments[1].stops.length === action.payload);
             return {
                 ...state,
-                filterTickets: data
+                filterTickets: data,
             };
         default:
             return state;

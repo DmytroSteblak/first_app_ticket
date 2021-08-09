@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing component <Ticket /> should render Ticket component with props 1`] = `
+<div
+  class="sc-gtsrHT htsKDc"
+>
+  <div
+    class="mt-4 border-0 shadow 1  card"
+  >
+    <div
+      class="card-body"
+    >
+      <div
+        class="header_ticket m-1 row"
+      >
+        <h5
+          class="w-50"
+        >
+          15400p
+        </h5>
+        <img
+          class=""
+          src="/assets/icon.png"
+        />
+      </div>
+      <div
+        class="content_ticket row"
+      >
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+            MOW - HTK
+          </div>
+          <div
+            class="hideClass"
+          >
+            11:42 - 19:11
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+            в пути
+          </div>
+          <div
+            class="hideClass"
+          >
+            31ч: 29м
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+            2 пересадки
+          </div>
+          <div
+            class="hideClass"
+          >
+            BKK
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+            HKT - MOW
+          </div>
+          <div
+            class="hideClass"
+          >
+            09:59 - 22:17
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+            в пути
+          </div>
+          <div
+            class="hideClass"
+          >
+            12ч: 18м
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+            3 пересадки
+          </div>
+          <div
+            class="hideClass"
+          >
+            DBX,KUL
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Testing component <Ticket /> should render Ticket component without props 1`] = `
+<div
+  class="sc-gtsrHT htsKDc"
+>
+  <div
+    class="mt-4 border-0 shadow 1  card"
+  >
+    <div
+      class="card-body"
+    >
+      <div
+        class="header_ticket m-1 row"
+      >
+        <h5
+          class="w-50"
+        >
+          p
+        </h5>
+        <img
+          class=""
+          src="/assets/icon.png"
+        />
+      </div>
+      <div
+        class="content_ticket row"
+      >
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+             - 
+          </div>
+          <div
+            class="hideClass"
+          >
+            Inval - Inval
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+            в пути
+          </div>
+          <div
+            class="hideClass"
+          >
+            NaNч: NaNм
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+             пересадки
+          </div>
+          <div
+            class="hideClass"
+          />
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+             - 
+          </div>
+          <div
+            class="hideClass"
+          >
+            Inval - Inval
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+            в пути
+          </div>
+          <div
+            class="hideClass"
+          >
+            NaNч: NaNм
+          </div>
+        </div>
+        <div
+          class="m-2 col-lg-3 col-md-3 col-sm-4 col-5"
+        >
+          <div
+            class="topClass"
+          >
+             пересадки
+          </div>
+          <div
+            class="hideClass"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

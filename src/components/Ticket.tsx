@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, Col, Image, Row } from 'react-bootstrap';
 
+import { getData, getTime } from '../different';
 import { PropsTickets } from '../types';
 import { CardBody } from '../styled/Ticket-styled';
-
 
 const Ticket: React.FC<PropsTickets> = ({
     price,
@@ -20,14 +20,6 @@ const Ticket: React.FC<PropsTickets> = ({
     stops,
     stopsBack
 }) => {
-    const getTime = (duration: number) => {
-        return Math.floor(duration / 60) + 'ч: ' + (duration % 60) + 'м';
-    };
-    const getData = (date: string, duration: number) => {
-        const dateStart = new Date(date);
-        const dateEnd = new Date(dateStart.getTime() + duration * 60 * 1000);
-        return dateStart.toTimeString().slice(0, 5) + ' - ' + dateEnd.toTimeString().slice(0, 5);
-    };
 
     return (
         <>

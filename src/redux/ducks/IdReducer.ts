@@ -3,7 +3,7 @@ import { call, put } from 'redux-saga/effects';
 import { getId } from '../../api';
 import { ActionLoadId, ActionTypeId, dataId, IdTypes, initialStateId } from '../../types';
 
-const initialState: initialStateId = {
+export const initialState: initialStateId = {
     searchId: ''
 };
 

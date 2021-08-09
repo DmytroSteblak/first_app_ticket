@@ -1,19 +1,22 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import{ Col, Form, FormCheck } from 'react-bootstrap';
 
-import { useAction } from '../hooks/useAction';
 import { Categories } from '../types';
-import { tickets } from './index';
+import { tickets } from '../different';
 import { NavB } from '../styled/Transplants-styled';
+import {allTickets, filterStopped} from "../redux/ducks/TicketsReducer";
+
 
 const Filter = () => {
     const history = useHistory();
-    const { filterStopped, allTickets } = useAction();
+    const dispatch = useDispatch()
     const [currentCategory, setCurrentCategory] = useState<Categories>(Categories.All);
 
     const { pathname } = useLocation();
+
     useEffect(() => {
         if (pathname === "/") {
             setCurrentCategory(Categories.All);
@@ -21,13 +24,14 @@ const Filter = () => {
             setCurrentCategory(pathname.slice(1) as Categories);
         }
     },[pathname]);
-    const handleClickFilter = (e: ChangeEvent<HTMLInputElement>, id: number, value: string) => {
+
+    const handleFilterChecked = (e: ChangeEvent<HTMLInputElement>, id: number, value: string) => {
         history.push(`/${e.target.defaultValue}`);
         if (e.target.defaultValue === value) {
-            filterStopped(id);
+            dispatch(filterStopped(id));
         }
         if (e.target.defaultValue === "all") {
-            allTickets();
+            dispatch(allTickets());
         }
     };
 
@@ -50,7 +54,7 @@ const Filter = () => {
                                     <FormCheck className="check_itm" key={itm.id}>
                                         <FormCheck.Label>{itm.label}
                                             <FormCheck.Input
-                                                onChange={(event: ChangeEvent<HTMLInputElement>) => handleClickFilter(event, itm.id, itm.value)}
+                                                onChange={(event: ChangeEvent<HTMLInputElement>) => handleFilterChecked(event, itm.id, itm.value)}
                                                 checked={itm.value === currentCategory}
                                                 name={itm.name}
                                                 value={itm.value}

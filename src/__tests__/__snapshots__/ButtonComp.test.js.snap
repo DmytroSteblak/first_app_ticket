@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component <ButtonComp/> should render ButtonComp component with props 1`] = `
+<styled.div>
+  <Button
+    active={false}
+    disabled={false}
+    onClick={[Function]}
+    variant="primary"
+  >
+    test text
+  </Button>
+</styled.div>
+`;

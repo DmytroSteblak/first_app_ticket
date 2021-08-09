@@ -11,13 +11,11 @@ export const getId = async (): Promise<dataId> => {
     return response.data;
 };
 
-
-
 export const getTicket =  async (id: string): Promise<dataTypes | null> => {
     try {
         const { data } = await instance.get<dataTypes>(`tickets?searchId=${id}`);
         return data?.stop ? data : getTicket(id);
-    }catch (error) {
+    } catch (error) {
         if (error.response.status === 500) {
             return getTicket(id);
         } else {
