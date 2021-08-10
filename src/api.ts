@@ -23,5 +23,3 @@ export const getTicket =  async (id: string): Promise<dataTypes | null> => {
         }
     }
 };
-
-

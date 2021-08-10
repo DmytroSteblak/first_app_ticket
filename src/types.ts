@@ -99,4 +99,3 @@ export interface dataTypes {
     stop: boolean,
     tickets: TicketsType[]
 }
-
