@@ -2,26 +2,25 @@ import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { ButtonComp } from './index';
+import { fastTickets, sortTickets } from '../redux/ducks/TicketsReducer';
 
 import { FilterRow } from '../styled/Filter-component';
-import {fastTickets, sortTickets} from "../redux/ducks/TicketsReducer";
-
 
 const Sort: FC = () => {
     const dispatch = useDispatch();
-    const handleSortCheap = () => {
+    const SortByPrice = () => {
         dispatch(sortTickets());
     };
-    const handleSortFast = () => {
+    const SortBySpeed = () => {
         dispatch(fastTickets());
     };
 
     return (
         <FilterRow>
-            <ButtonComp onClick={handleSortCheap}>
+            <ButtonComp onClick={SortByPrice}>
                 самый дешевый
             </ButtonComp>
-            <ButtonComp onClick={handleSortFast}>
+            <ButtonComp onClick={SortBySpeed}>
                 самый быстрый
             </ButtonComp>
         </FilterRow>

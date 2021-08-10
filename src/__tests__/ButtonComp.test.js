@@ -28,4 +28,5 @@ describe('Button component <ButtonComp/>',function () {
         button.find('Button').simulate('click');
         expect(mockCallBack.mock.calls.length).toEqual(1);
     });
-})
+
+});

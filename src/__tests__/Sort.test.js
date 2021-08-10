@@ -15,7 +15,8 @@ beforeEach(() => {
     component = mount(
         <Provider store={store}>
             <Sort {...props} />
-        </Provider>);
+        </Provider>
+    );
 });
 
 describe('Sort component', () => {
@@ -31,4 +32,5 @@ describe('Sort component', () => {
         const wrapper = component.find('ButtonComp');
         expect(wrapper.length).toBe(2);
     });
+
 });

@@ -7,7 +7,7 @@ import toJson from 'enzyme-to-json';
 import Filter from '../components/Filter';
 
 const mockUseLocationValue = {
-    pathname: '/testroute',
+    pathname: '/testRoute',
     search: '',
     hash: '',
     state: null
@@ -22,7 +22,7 @@ jest.mock('react-router-dom', () => ({
     })
 }));
 
-describe('Testing <Filter/>', () => {
+describe('Testing component <Filter/>', () => {
     const initialState = { output: 10 };
     const mockStore = configureStore();
     let store;
@@ -40,4 +40,5 @@ describe('Testing <Filter/>', () => {
     it('should Search have be rendered correctly', () => {
         expect(toJson(component)).toMatchSnapshot();
     });
+
 });

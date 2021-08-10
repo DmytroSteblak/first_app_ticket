@@ -31,4 +31,5 @@ describe('Testing component <Ticket />', () => {
         const component = render(<Ticket />);
         expect(toJson(component)).toMatchSnapshot();
     });
+
 });

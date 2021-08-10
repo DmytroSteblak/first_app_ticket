@@ -10,4 +10,5 @@ describe('Testing component <Hader/>', () => {
         const header = shallow(<Header />);
         expect(toJson(header)).toMatchSnapshot();
     });
+
 });

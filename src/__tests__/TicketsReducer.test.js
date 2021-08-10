@@ -50,7 +50,7 @@ describe('TicketsReducer', () => {
         });
     });
 
-    it('filter Reducer stopping', () => {
+    it('should return filtered Tickets', () => {
         const action = {
             type: TicketTypes.FILTER_STOPPING,
             payload: 2
@@ -61,27 +61,28 @@ describe('TicketsReducer', () => {
         });
     });
 
-    it('action setTicket ', function () {
+    it('Should return SET_TICKETS', function () {
         expect(setTickets()).toEqual({
             type: TicketTypes.SET_TICKETS
         });
     });
 
-    it('action sort cheap ', function () {
+    it('Should return CHEAP', function () {
         expect(sortTickets()).toEqual({
             type: TicketTypes.CHEAP
         });
     });
 
-    it('action sort fast ', function () {
+    it('Should return FAST', function () {
         expect(fastTickets()).toEqual({
             type: TicketTypes.FAST
         });
     });
 
-    it('action sort fast ', function () {
+    it('Should return ALL_TICKETS', function () {
         expect(allTickets()).toEqual({
             type: TicketTypes.ALL_TICKETS
         });
     });
+
 });

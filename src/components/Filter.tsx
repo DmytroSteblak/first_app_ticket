@@ -4,17 +4,15 @@ import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import{ Col, Form, FormCheck } from 'react-bootstrap';
 
+import { allTickets, filterStopped } from '../redux/ducks/TicketsReducer';
 import { Categories } from '../types';
 import { tickets } from '../different';
 import { NavB } from '../styled/Transplants-styled';
-import {allTickets, filterStopped} from "../redux/ducks/TicketsReducer";
-
 
 const Filter = () => {
     const history = useHistory();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const [currentCategory, setCurrentCategory] = useState<Categories>(Categories.All);
-
     const { pathname } = useLocation();
 
     useEffect(() => {
@@ -25,12 +23,12 @@ const Filter = () => {
         }
     },[pathname]);
 
-    const handleFilterChecked = (e: ChangeEvent<HTMLInputElement>, id: number, value: string) => {
+    const updateStopped = (e: ChangeEvent<HTMLInputElement>, id: number, value: string) => {
         history.push(`/${e.target.defaultValue}`);
         if (e.target.defaultValue === value) {
             dispatch(filterStopped(id));
         }
-        if (e.target.defaultValue === "all") {
+        if (e.target.defaultValue === 'all') {
             dispatch(allTickets());
         }
     };
@@ -54,7 +52,7 @@ const Filter = () => {
                                     <FormCheck className="check_itm" key={itm.id}>
                                         <FormCheck.Label>{itm.label}
                                             <FormCheck.Input
-                                                onChange={(event: ChangeEvent<HTMLInputElement>) => handleFilterChecked(event, itm.id, itm.value)}
+                                                onChange={(event: ChangeEvent<HTMLInputElement>) => updateStopped(event, itm.id, itm.value)}
                                                 checked={itm.value === currentCategory}
                                                 name={itm.name}
                                                 value={itm.value}

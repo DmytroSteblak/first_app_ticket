@@ -50,4 +50,5 @@ describe('TicketsList Component', () => {
         const ticketsList = setUp(state);
         expect(toJson(ticketsList)).toMatchSnapshot();
     });
+
 });
