@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TicketsList Component should render component 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "subscription": Subscription {
+        "handleChangeWrapper": [Function],
+        "listeners": Object {
+          "notify": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": null,
+      },
+    }
+  }
+>
+  <TicketsList
+    filterTickets={
+      Array [
+        Object {
+          "carrier": "S7",
+          "price": 30546,
+          "segments": Array [
+            Object {
+              "date": "2021-04-24T02:20:00.000Z",
+              "destination": "HKT",
+              "duration": 1769,
+              "origin": "MOW",
+              "stops": Array [
+                "HKG",
+                "BKK",
+                "AUH",
+              ],
+            },
+            Object {
+              "date": "2021-05-14T09:20:00.000Z",
+              "destination": "MOW",
+              "duration": 1196,
+              "origin": "HKT",
+              "stops": Array [],
+            },
+          ],
+        },
+      ]
+    }
+    loading={true}
+    searchId=""
+    tickets={
+      Array [
+        Object {
+          "carrier": "S7",
+          "price": 30546,
+          "segments": Array [
+            Object {
+              "date": "2021-04-24T02:20:00.000Z",
+              "destination": "HKT",
+              "duration": 1769,
+              "origin": "MOW",
+              "stops": Array [
+                "HKG",
+                "BKK",
+                "AUH",
+              ],
+            },
+            Object {
+              "date": "2021-05-14T09:20:00.000Z",
+              "destination": "MOW",
+              "duration": 1196,
+              "origin": "HKT",
+              "stops": Array [],
+            },
+          ],
+        },
+      ]
+    }
+  />
+</ContextProvider>
+`;

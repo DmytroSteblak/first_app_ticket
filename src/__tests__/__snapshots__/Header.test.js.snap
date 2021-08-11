@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing component <Hader/> is the header displayed 1`] = `
+<Row
+  noGutters={false}
+>
+  <styled.div>
+    <Image
+      alt="icon_img"
+      fluid={false}
+      rounded={false}
+      roundedCircle={false}
+      src="/assets/airport.png"
+      thumbnail={false}
+    />
+  </styled.div>
+</Row>
+`;
